@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeParisien - Unos</title>
+  <link rel="stylesheet" href="stil.css">
+  <script>
+    function validateForm() {
+      var naslov = document.getElementById("naslov").value;
+      var sazetak = document.getElementById("sazetak").value;
+      var tekst = document.getElementById("tekst").value;
+      var slika = document.getElementById("slika").value;
+      var kategorija = document.getElementById("kategorija").value;
+
+      if (naslov.length < 5 || naslov.length > 30) {
+        document.getElementById("naslov").style.borderColor = "red";
+        alert("Naslov vijesti mora imati između 5 i 30 znakova.");
+        return false;
+      }
+      if (sazetak.length < 10 || sazetak.length > 100) {
+        document.getElementById("sazetak").style.borderColor = "red";
+        alert("Kratki sadržaj vijesti mora imati između 10 i 100 znakova.");
+        return false;
+      }
+      if (tekst === "") {
+        document.getElementById("tekst").style.borderColor = "red";
+        alert("Unesite tekst vijesti.");
+        return false;
+      }
+      if (slika === "") {
+        document.getElementById("slika").style.borderColor = "red";
+        alert("Odaberite sliku za vijest.");
+        return false;
+      }
+      if (kategorija === "") {
+        document.getElementById("kategorija").style.borderColor = "red";
+        alert("Odaberite kategoriju.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+
+</head>
+
+
+<body>
+  <head>
+    <meta charset="UTF-8">
+    <title>LeParisien - Unos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stil.css">
+  </head>
+  <body>
+    <header>
+      <h1><header>
+    <img src="logo.png" alt="Logo" class="logo" style="width: 400px;" >
+  </header></h1>
+    </header>
+  <hr/>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container justify-content-center">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">Početna</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kategorija.php?kategorija=parisien">Parisien</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kategorija.php?kategorija=vivre mieux">Vivre Mieux</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="unos.html">Unesi vijest</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="prijava.php">Administracija</a>
+        </li> 
+      </ul>
+    </div>
+  </nav>
+  <form action="skripta.php" method="POST" onsubmit="return validateForm()" enctype="multipart/form-data">
+
+      <label for="naslov">Naslov vijesti:</label>
+      <input type="text" id="naslov" name="naslov">
+  
+      <label for="sazetak">Kratki sadržaj vijesti:</label>
+      <textarea id="sazetak" name="sazetak"></textarea>
+  
+      <label for="tekst">Tekst vijesti:</label>
+      <textarea id="tekst" name="tekst"></textarea>
+  
+      <label for="slika">Slika:</label>
+      <input type="file" id="slika" name="slika">
+  
+      <label for="kategorija">Kategorija:</label>
+      <select id="kategorija" name="kategorija">
+        <option value="">Odaberite kategoriju</option>
+        <option value="Parisien">Parisien</option>
+        <option value="Vivre Mieux">Vivre Mieux</option>
+      </select>
+      <input type="hidden" name="id" value="id">
+      <input type="submit" value="Pošalji">
+    </form>
+    <footer>
+      <p>Autor: Mia Sykora</p>
+      <p>Kontakt: msykora@tvz.hr</p>
+      <p>© 2023. LeParisien. Sva prava pridržana.</p>
+      <a href="odjava.php" class="btn btn-primary">Odjava</a>
+    </footer>
+
+</body>
+
+</html>
